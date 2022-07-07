@@ -1,0 +1,375 @@
+
+Hello Everyone!
+
+Trainer: Sonal Mittal
+
+Module 2 & Module3: GIT & GITHUB
+
+Recap:
+
+
+
+Agenda:
+
+Deletion workflow in git
+Revert a commit in git
+.gitignore workflow
+Branching & merging
+Stashing & rebasing
+
+
+
+
+
+open file in linux
+
+vim filename
+
+inside the file : press i
+
+enter the data
+
+to save the fiel
+
+press esc key
+then press :wq!
+
+
+File already commit to git , if it is chnaged -- then the status fo the file will be modified
+
+if a new file is create din WD and not commited to local repo -- the status will be new file
+
+
+----> completed ---->Add a new fiel to LR
+
+modify an exisitng commited file and add the changes to the LR
+
+Adding modified files to Local repo
+
+This commad is applicable to files that are in status modified
+
+This command will directly take the modifications and commit to Local repo
+
+here in the command
+
+- a : add all the modification files and commit them to LR
+
+-m : is a message
+
+$ git commit -m -a "added modified file"
+
+
+Seanrio 3:
+
+git command to see the log in single line
+
+$ git log --oneline
+
+$ git log ==> will show you all the commits done on your repository
+
+$  git log --diff-filter=D --summary
+Scenario 4:
+
+command that will show us what happned in that particular commit
+
+$ git show <commit id>
+
+
+Scenario 5:
+***************
+
+Delete a file from LR & Working Directory also
+
+$ git rm <filename>
+
+$ git commit -m "deleted file"
+
+Deleted from wd and LR
+
+you will see a deleted file in the stagging area
+
+commit has to be crweated even for a deleted file , so using that commit we can recover the file
+
+
+Scenario 6:
+**************************
+
+Revert Command:
+
+It is used to revert the chnages done as part of a commit
+
+revert command will be applied only on commit id
+
+$ git show <commitid>
+
+$ git revert <commit id>
+
+it will open a editor asking you for the reason of revert
+
+
+Scenario 7:
+************************
+.gitingore 
+
+In the working directory, I may have files that i dont want to version control
+
+In this case we can ask git ignore those files and not to track them
+
+.gitingore  is a name of a file
+
+In this file we will add all the names of the files that are not to be tracked
+
+
+.gitingore filename cannot change, this file has no extension
+
+This concept is applicaple only for new files that are Untracked
+
+Step1:
+
+Create a .gitignore file
+
+
+Step2:
+
+in the file add the names or extension of fiels to be ignore
+
+
+*.log
+*.php
+*.xml
+*.txt
+
+save the file
+
+Steps 3: git status, these files 
+
+*.log
+*.php
+*.xml
+*.txt
+
+will be in working directory but will be ignored by git
+
+Step 4:
+
+Add the .gitignore to Stagging area and commit it to local repo
+
+
+
+Scenario 9: branching & merging
+*************************
+
+List the branch
+
+ git branch
+
+create a branch 
+
+git branch feature1
+
+Switch to branch
+
+git checkout feature1
+
+
+A command that will create a branch and even switch to the new branch
+
+
+
+$ git checkout -b feature2
+
+
+5ca1127 (HEAD -> feature2) file from branch feature2
+
+
+Merge the changes from a branch to master branch
+
+before merging alwasy switch to destination branch
+
+then merge
+
+  git merge feature2 master
+
+
+ delet the feature branch
+
+git branch -d <branchname>
+
+git branch -d feature2
+
+
+
+merge only specific changes from feature branch to master -- how to do that?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Assignment:
+*******************
+
+Git reset command
+
+
+1 >   git reset --hard <commit id>
+
+ this commit id will become head now
+
+ all commit before it will be deletd, chnages will be deleted from LR & WD
+
+
+
+2 > git reset --soft <commit id>
+
+ this commit id will become head now
+
+ all commit before it will be deletd, chnages will be deleted from LR 
+
+Chnages will be stagging area and WD
+
+
+3 > git reset --mixed <commit id>
+
+ this commit id will become head now
+
+ all commit before it will be deletd, chnages will be deleted from LR and stagging area
+
+Chnages will be untracked in WD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
