@@ -1,0 +1,115 @@
+STASHING of files on GIT
+***************************
+
+# git status ==> * indicates we are on master branch
+# vim exitingfileName ==> inster new code for signout button ==>esc ==> :wq!
+
+
+
+# git status ==> changes that are untracked and we don’t want to commit them right now.
+
+So stash them on temporary space:
+
+# git stash   ==> all the untracked changes will be moved to temperory space
+
+
+
+# git stash list   ==> will give list of chnages stashed 
+
+
+# git show stashnumber  ==> give stash number
+
+
+GET changes back from stash ===> UNSTASHING
+
+# git stash pop stash@{0}   ==> will revert back all untracked file chnages
+After unstashing, the files will be dropped from temperory shelves. 
+
+
+********************
+
+Cloning
+
+git clone <remotereponame>
+
+git clone https://github.com/Sonal0409/18Apr-ClassNotes
+
+Forking.
+Click on fork button on another users repo to perform forking
+
+
+Git conflicts:
+********************
+
+
+
+
+
+
+
+
+# cd
+# pwd
+************************************
+JAVA Installation
+
+SEE THAT YOU ARE IN ROOT DIRECTORY
+
+# yum install java-1.8.0-openjdk-devel
+
+Install jenkins
+*********************
+
+Specific OS : CENTOS
+
+go to https://www.jenkins.io/
+
+Execute the 2 commands
+
+  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+execute command install jenkins
+
+ yum install jenkins -y
+
+
+Start Jenkins Server:
+****************
+
+systemctl start jenkins --> Centos
+
+OR 
+
+service jenkins start ---> ubuntu(lab)
+
+
+Go to browser
+
+public ip:8080
+
+ cat /var/lib/jenkins/secrets/initialAdminPassword
+ 
+ 
+get password-==? paste on dashboard
+
+Click on install suggested plugins
+Give username and password details
+
+username:  admin
+password: admin
+
+Jenkisn is ready to use
+
+reation of a Job:
+************************************
+
+#1 Jenkins --> New Item --> Job1 --> Build --> shell comand---> echo 'this is my first job'
+
+Save --> click on Build Now  --> click on build number --> click on Console to see output
+
+#2 Jenkins --> New Item --> Job2 --> Build --> shell comand---> 
+date >> /tmp/date.txt
+echo 'this is my second job'
+
+Save --> click on Build Now  --> click on build number --> click on Console to see output
