@@ -1,0 +1,233 @@
+Notes  : 11 July -2022
+
+****************************
+
+What are the commonly used plugins in jenkins by you:
+git, github, ssh, maven. msbuild, junit, jsmine,selenium,Build with parameters plugin, email
+
+
+Always Start jenkins server
+
+$ sudo su -
+
+$ systemctl start jenkins
+
+$ systemctl status jenkins 
+
+If you are unable to login into jenkins due to incorrect password:
+
+
+perform following steps:
+
+ cd /var/lib/jenkins
+
+cd users
+
+$  vim users.xml
+
+In this change the password
+
+<?xml version='1.1' encoding='UTF-8'?>
+<hudson.model.UserIdMapper>
+  <version>1</version>
+  <idToDirectoryNameMap class="concurrent-hash-map">
+    <entry>
+      <string>admin</string>
+      <string>admin</string>             ===> enter new password here.
+    </entry>
+  </idToDirectoryNameMap>
+
+
+save the file and you will be able to login
+
+
+Scenario 1:
+
+Create a job in jenkins to execute Linux commands
+
+ > create a job
+ > build step
+ > build now
+ > build history
+ > workspace
+
+Scenario 2:
+
+Create a job, that will clone the github repository
+
+jenkins + github
+
+
+Steps to execute above 2 scenarios:
+
+#1 Jenkins --> New Item --> Job1 --> Build --> shell comand---> echo 'this is my first job'
+
+Save --> click on Build Now  --> click on build number --> click on Console to see output
+
+#2 Jenkins --> New Item --> Job2 --> Build --> shell comand---> 
+date >> /tmp/date.txt
+echo 'this is my second job'
+
+Save --> click on Build Now  --> click on build number --> click on Console to see output
+
+
+
+
+Triggers:
+************
+
+1. Trigger builds remotely (e.g., from scripts)
+
+Select the above very first option
+give Authentication token as : token1 
+any unique token number
+
+And then copy the path provided below in this format:
+JENKINS_URL/job/job4/build?token=TOKEN_NAME 
+
+
+update the above url in this way:
+Jenkins_URL: Curent url :http://3.140.252.165:8080
+Token_NAME: token number/name provided above
+
+Take this path and execute on anyother browser.
+
+http://3.140.252.165:8080//job/job4/build?token=token1
+
+Login as admin  and password admin
+
+you can run that job.
+
+*************************************
+
+
+2. Trigger prieodically
+
+Create anew Job--> build trigger--> build preodically --> give * * * * * --> Save and build now
+
+All build will be genrated automatically every  mins
+
+
+
+************************************
+
+3. Trigger by POLL SCM
+
+Create a new Job-->Source code management--> Add git path
+
+https://github.com/Sonal0409/GITHUBJENKINSDEMO
+
+Build Triggers--> Poll SCM --> * * * * *
+
+In this every minute jenkins will poll github for change or for a new event
+
+Build will be generated each time there is a chnage in the repository only.
+
+
+*******************************************
+
+4. GitHub hook trigger for GITScm polling
+
+> Select the above option in jenkins jon
+
+Save the job 
+
+and now go to git hub
+
+Always save the job and then only  go to git hub, perform these steps
+
+go to the repository setting
+select webhooks on left side
+
+
+click on createwebhook on right side
+
+provide following information:
+
+Payload URL : jenkinsurl/github-webhook/ ===> http://3.140.252.165:8080/github-webhook/
+
+Content type : select application/json
+
+Secret: no need of any value
+
+Which events would you like to trigger this webhook?
+
+select first option -- Just the push event.
+
+Select Active
+click on add webhook.
+
+now make some changes in repo,
+
+go to jenkins--> you will see a new build has been created
+
+*****************************
+
+5. Build after toher projects
+
+select a exisitng job as parent job and save the job
+
+if parent job is executed, child job will be automatically triggered
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
