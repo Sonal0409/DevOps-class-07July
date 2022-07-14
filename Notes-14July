@@ -1,0 +1,63 @@
+1. Master and Slave in Jenkins
+
+Create a slave machine
+
+install git
+
+yum install git -y
+
+Install java
+
+yum install java-1.8.0-openjdk-devel
+
+Install maven
+
+yum install maven
+
+Create a root directory for master
+
+/tmp/jenkinsdir
+
+
+chmod -R 777 /tmp/jenkinsdir
+
+*************
+
+Go to Master  -- Node where Jenkins is installed is Master
+********************
+
+1. You have to update jenkins URL in Jenkins Master configuration page
+
+Manage Jenkins ==> configure system ==> scroll down to Jenkins URL --> update the URL with latest ipaddress and port number
+
+
+2. Select Agent port number
+
+Manage Jenkins ==> Configure Global Security==> scroll to agents section and select random ==> Save changes
+
+3. Now configure Agent/node
+
+Manage Jenkins ==> Manage nodes and clouds ==> Click on New Node
+
+1. Node name ==> linux_slave
+
+2. Select Permanent Agent
+
+3. Number of executors = 1
+
+4. Remote root directory = /tmp/jenkinsdir
+
+5. Labels = linux_slave
+
+6. Usage = Only build jobs with label expression matching the node
+
+7. Launch method = Launch agents via SSH
+
+8. Host = private ip of agent node = 172.31.32.130
+
+9. Set up credentials in jenkins:
+
+10. Tool  locations:
+
+       JDK
+       git
