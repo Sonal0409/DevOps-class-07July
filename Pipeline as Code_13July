@@ -1,0 +1,228 @@
+
+
+1. build Pipeline as a Code
+
+Pipeline project  ==> you will create pipeline by write code
+
+The code in Jenkins is based on Domain specific language
+
+Jenkins pipeline syntax
+
+ > scripted pipeline syntax
+
+admin has to be really good in groovy scripting to write scripted pipeline code
+everythign is defined by the jenkins admin itself
+There was no proper structure to write code
+Any new person, it was very difficult to read or understand scripted pipelines
+Wrting the code need the admin to be an expert in groovy
+if any one task fails, you will ahve to re run the entire pipeline
+when you execute, jenkins doesnot validate if the admin has written correct syntax or not
+
+a Scripted pipeline will always with  the keyword node
+
+ > Declarative Pipeline syntax - Jenkins 2
+********************************
+We write the code to create CI/CD  pipelines using Declarative pipeline code
+declartive in nature we mean key value
+It is very easy to write and very easy to read
+There is a proper structure that you will following while writing the code
+Upon execution of pipeline, Jenkins will first validate the code and then execute it
+We can always rerun particular set of stage again
+****
+To write pipeline code, jenkisn will help you with a small tool as SNIPPET GENERATION
+
+Using this tool, you can generate the pipeline code
+
+Structure of declarative pipeline syntax
+
+it will walys start with a keyword ==> pipeline
+
+
+pipeline{
+
+
+}
+
+2nd section in the pipeline
+
+tools section ==> what tools will be sued by jenins to run the pipeline successfully
+
+pipeline{
+
+
+	tools{
+		jdk 'myjava'
+                maven 'mymaven'
+        }
+
+
+}
+
+
+3rd section : mandatory section
+
+agent ==> on which server your pipeline jobs will be executed
+
+pipeline{
+
+
+	tools{
+		jdk 'myjava'
+                maven 'mymaven'
+        }
+	agent {Slave Server name}
+
+}
+
+
+4. Parameters : variables
+
+pipeline{
+
+
+	tools{
+		jdk 'myjava'
+                maven 'mymaven'
+        }
+	agent {
+	Slave Server name
+	}
+
+	parameters{
+		name value
+	}
+
+}
+
+
+5. Jobs to be executed fall under a section called as stages
+
+pipeline{
+	tools{
+		jdk 'myjava'
+                maven 'mymaven'
+        }
+	agent {
+	Slave Server name
+	}
+
+	parameters{
+		name value
+	}
+
+        stages{
+
+         stage('Name to the job')   ==> stage is nothing but a job
+		
+          {
+		steps{
+			// write down the command that jenkins has to execute
+                 }
+		post{
+}
+               }
+
+         stage('Name to the job')   ==> stage is nothing but a job
+
+	trigger{
+
+		 pollSCM('* * * * *')
+}
+
+          {
+		steps{
+			// write down the command that jenkins has to execute
+                 }
+		post{
+}
+               }
+
+         stage('Name to the job')   ==> stage is nothing but a job
+		
+          {
+		steps{
+			// write down the command that jenkins has to execute
+                 }
+		post{
+}
+               }
+
+         stage('Name to the job')   ==> stage is nothing but a job
+		
+          {
+		steps{
+			// write down the command that jenkins has to execute
+                 }
+		post{
+}
+               }
+}
+
+}
+
+
+  Maven command that we write are always written as ==>  mvn commandname/goal
+
+
+Example:
+
+Create a new job ==> select project as pipeline
+
+
+pipeline{
+    tools{
+        jdk 'myjava'
+        maven 'mymaven'
+    }
+    agent any
+    stages{
+        stage('checkout'){
+            steps{
+                git 'https://github.com/Sonal0409/DevOpsClassCodes.git'
+            }
+        }
+        stage('compile'){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        stage('codeReview'){
+            steps{
+                sh 'mvn pmd:pmd'
+            }
+        }
+        stage('unitTest'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage('metricCheck'){
+            steps{
+                sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
+            }
+        }
+        stage('package'){
+            steps{
+                sh 'mvn package'
+            }
+            
+        }
+
+    }
+}
+
+
+Jenkinsfile
+
+> it is a file that is created and is maintained in your github repo
+
+> in this file we write the pipeline code outside of jenkins server and push to github
+
+> advantage--> multiple team mebers can modify or edit or contribute to your jenkinsfile
+
+Then jenkins can pull the jenkinsfile form github and exeucte the pipeline
+
+
+
+
+
