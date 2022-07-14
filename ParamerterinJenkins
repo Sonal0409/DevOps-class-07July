@@ -1,0 +1,36 @@
+
+Parameters are nothing but 
+Key=value
+In Jenkins
+	User defined variables
+You define the variable name and variable value
+
+	Jenkins provided environment variables
+
+Jenkins define the variable name and variable value
+Use them for dynamic inputs in your scripts
+
+Parametrized build : When the job is build, we provide the value of parameter or variables
+
+1.	Add Parameters in the job and build it
+
+
+Take an existing job
+
+We will parameterize the github repo URL in the job
+
+We will create parameter in the job
+
+String parameter
+ Description
+ Default value
+
+You will use the parameter in Jenkins script/pipelinecode or in any field of freestyle job
+
+Refer to the parameter
+
+For example:
+Name of parameter is : username
+
+Refer to it in script as :   ${username}
+
