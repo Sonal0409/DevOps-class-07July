@@ -1,0 +1,200 @@
+Install Docker:
+
+
+Docker Host:
+
+$ sudo su -
+
+$ yum install docker -y
+
+
+Start docker service
+
+$ systemctl start docker
+
+This command is used to query images present on docker host
+
+$ docker images
+
+
+Images are always maintained in docker hub, you need to pull from docker hub
+
+
+
+How do we give name of the image
+
+ imagename:tagname
+
+$ docker pull imagename
+
+$ docker pull ubuntu
+
+docker will pull image form docker hub of version/tag = latest
+
+$ $ docker pull imagename:tagname
+
+$ $ docker pull ubuntu:18.04
+
+$ docker pull tomcat:7
+
+docker will pull image form docker hub of version/tag = 18.04
+
+
+How do we create a container
+
+> containers are always created by execution of  "docker run image" command
+
+An Image can run in 2 modes
+
+1. forground mode (-it)
+
+When an image is run to create a container in foreground mode, user will be logged on the container
+
+$  docker run -it ubuntu
+
+comeout of container
+
+ctl + pq  ==> user will be out of container and container will be running
+
+exit ==> user will be out of container and container will be exited
+
+query the containers on host with any status:
+
+$ docker ps -a
+
+query container that are up & running only
+
+$ docker ps
+
+2. detached mode (-d)
+
+When an image is run to create a container in detached mode,
+
+Continer will be created and will be running
+
+ user will not be logged on the container
+
+  $ docker run -d --name n1 nginx
+
+
+How to access the container:
+
+Access OS type container within the docker host
+
+
+if you want to be on the contaienr to create a file, to make chnages , to modify data
+
+that process is called as attaching to the container
+
+for this process, container has to be up & running
+
+
+if you have a container which is exited, how can we start it
+
+$ docker start containerid/containername
+
+Now attach to the container:
+
+$ docker attach containerid/containername
+
+Comeout of container
+
+Ctl +pq
+
+Stop a running container
+
+$ docker stop containerid/containername
+
+
+***************
+
+how to see all the details of a container:
+
+$ docker inspect containername
+
+
+How to delete containers:
+
+docker rm -f 2d78ec816a65 394b07f77d7b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
