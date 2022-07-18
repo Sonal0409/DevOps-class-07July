@@ -1,0 +1,169 @@
+
+# docker images
+
+# docker ps -a
+
+
+Deleting all containers:
+
+$ docker rm -f $(docker ps -aq)
+
+Deleting all images:
+
+$ docker system prune --all
+
+
+Scenario 1: Port forwarding / Port Binding
+********************
+
+Once a container si created, you can access it from host machine
+
+or
+
+IF THE CONTAINER IS OF TYPE WEB APPLICATION
+
+you can access the application of the container from the browser of your laptop
+
+***** This scenario is not application to Images of type OS, DB
+
+This scenario of Port forwarding / Port Binding works for Images which have web application
+
+
+Port forwarding / Port Binding ==> it is applied only when creating the container
+
+Once the container is created you cannot map a port
+
+Here you have to give 2 posts for mapping
+
+1. system port : any free port on EC2 
+
+2. Container port : port exposed on the image--> you cannot change this if it is docker base image
+
+For mapping , your will use run command and the option will be 
+
+-p systemport:cotainerport
+
+$  docker run -d --name n2 -p 8082:80 nginx
+
+
+-P : docker will assign system port and container port. we dont do any port mapping
+
+$ docker run -d --name n3 -P nginx
+
+
+*****************
+
+Scenario 2:
+
+
+Once the container is running, you can acess its application page from the host
+
+Step 1:
+
+$ docker exec -it contianerName bash
+
+For nginx container the location for application page is going to be 
+
+/usr/share/nginx/html
+
+$ cd /usr/share/nginx/html
+
+$ ls
+
+you will find index.html, chnage the content of this file
+
+$ echo "this is new file" > index.html
+
+$ exit
+
+Access the container from browser, you new application willbe available
+**************************
+
+Docker Volumes:
+
+*************************
+
+1. How to create a volume
+
+2. Attach the volume to the container directory whose data has to be preserved
+
+3. Delete the container and check if data is preserved in the volume ot not
+
+4. Can containers share the data ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
