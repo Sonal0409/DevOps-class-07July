@@ -85,11 +85,126 @@ Docker Volumes:
 
 1. How to create a volume
 
+Volume is a directory which will preserve containers data, even after container is deleted
+
+$ docker volume ls
+
+$ docker volume create <name>
+
+The volume will store the data in the follwing path:
+
+/var/lib/docker/volumes/myvol/_data
+
 2. Attach the volume to the container directory whose data has to be preserved
+
+Volume mapping/volume mounts is done using -v
+
+docker run -it --name u4 -v myvol:/tmp ubuntu
+
+on the container fo to tmp directory, create 2 3 empty files
+
+come out of container
+
+Go to volume directory :/var/lib/docker/volumes/myvol/_data
+
+you will back of the files
+
 
 3. Delete the container and check if data is preserved in the volume ot not
 
+
+Now delete the container, still file will be in volume directory
+
+you will give : volume Name and container directory whose data has to be preserved
+
 4. Can containers share the data ?
+
+Yes.
+
+You can have 1 volume and multiple containers can mouth that volume
+
+
+docker run -it --name u1 -v myvol:/tmp ubuntu
+
+Create a file file1
+
+docker run -it --name u2 -v myvol:/tmp ubuntu
+
+
+Scenario 5: 
+
+Type Volume : Bind mounts
+
+
+With bind mount type of volume, any directory on the host can be mounted on the container directory
+
+
+
+1. get the application code from github to Local docker host
+
+$  git clone https://github.com/Sonal0409/ecomm.git
+
+$ cd ecomm
+
+$ ls
+
+$ pwd ==>  /root/ecomm
+
+2. What ever code files are in the current directory, copy it to the container directory
+
+HTML code doesn't need to be build
+HTMl code will always be deployed on a Httpd image
+
+
+$  docker run -d --name web -P -v /root/ecomm/:/usr/local/apache2/htdocs httpd
+
+Application code will be on the container
+
+ipaddress:portnumber  ==> access application
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
