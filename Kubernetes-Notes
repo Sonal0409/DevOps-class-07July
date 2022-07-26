@@ -338,3 +338,22 @@ spec:
 This opens up a vim editor with the configmap in yaml format. Now simply edit it and save it.
 
 **************************************
+
+Install Helm version3
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+
+Deploy Jenkins on kubernetes using helm
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+helm install my-release bitnami/jenkins
+
+helm list
+#Wait for 2 mins to see Jenkins UP
+kubectl get deploy
+kubectl get pods
+kubectl get svc
+
